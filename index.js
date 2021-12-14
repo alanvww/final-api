@@ -7,12 +7,12 @@ const port = process.env.PORT || 4000;
 const firebase = require('firebase/app');
 // Get configuration object so we can communicate with firebase
 const firebaseConfig = {
-	apiKey: 'AIzaSyDXxPtJPCHNyb-s2ZACOhh1-qNSVfTVO7Y',
-	authDomain: 'final-project-4d11a.firebaseapp.com',
-	projectId: 'final-project-4d11a',
-	storageBucket: 'final-project-4d11a.appspot.com',
-	messagingSenderId: '82999155333',
-	appId: '1:82999155333:web:5bebe67b770e9adde267ec',
+	apiKey: 'AIzaSyA2EmRGcbAQYEpYRY7G-gQaaxED8_SXSHE',
+	authDomain: 'dynamic-web-app-final.firebaseapp.com',
+	projectId: 'dynamic-web-app-final',
+	storageBucket: 'dynamic-web-app-final.appspot.com',
+	messagingSenderId: '1074003751253',
+	appId: '1:1074003751253:web:f0b3f8cfe50487fee47fdc',
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -37,12 +37,15 @@ app.use(function (req, res, next) {
 
 // routes for directing user to correct place
 const indexRoute = require('./routes/index');
-const articleRoute = require('./routes/article');
-const createArticleRoute = require('./routes/createArticle');
-// tell express to use routes
+const listRoute = require('./routes/list');
+const createListRoute = require('./routes/createList');
+
+// Get all posts
 app.use('/', indexRoute);
-app.use('/article', articleRoute);
-app.use('/create', createArticleRoute);
+// Submit new post
+app.use('/create', createListRoute);
+
+app.use('/list', listRoute);
 // Listen for port
 app.listen(port, () => {
 	console.log(`Example app listening at http://localhost:${port}`);

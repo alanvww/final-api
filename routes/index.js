@@ -15,8 +15,10 @@ router.get('/', (req, res) => {
 	lists
 		.then((response) => {
 			response.forEach((doc) => {
+				const docData = doc.data();
+				docData.id = doc.id;
 				// Push document into array every time the query loops over data and push into array
-				listsArray.push(doc.data());
+				listsArray.push(docData);
 			});
 			return res.send(listsArray);
 		})
